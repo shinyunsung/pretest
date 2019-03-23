@@ -1,11 +1,17 @@
-<script type='text/javascript'>
-	var x = 300;
-	var slider = document.getElementById("slider");
-	var slideArray = slider.getElementsByTagName("li");
-	var slideMax = slideArray.length - 1;
-	var curSlideNo = 0;
-	for (i = 0; i <= slideMax; i++) {
-		if (i == curSlideNo) slideArray[i].style.left = 0;
-		else slideArray[i].style.left = -x + "px";
-	}
-</script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("slide");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 2000); // 2초 마다 변경
+}
